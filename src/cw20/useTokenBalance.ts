@@ -3,6 +3,7 @@ import { TokenBalance, Tokens } from '../types'
 import { useTokens } from '../data/tokens'
 import useLCD from '../api/useLCD'
 import { useAddress } from '../data/auth'
+import tokens from '../tokens.json'
 
 export interface TokenBalanceQuery {
   loading: boolean
@@ -14,9 +15,10 @@ export interface TokenBalanceQuery {
 
 export default (): TokenBalanceQuery => {
   const address = useAddress()
-  const tokens = useTokens()
+  const t = tokens['testnet']
+
   const lcd = useLCD()
-  const values = Object.values(tokens)
+  const values = Object.values(t)
 
   const queries = useQueries(
     values.map(({ token }) => ({
@@ -47,7 +49,7 @@ export default (): TokenBalanceQuery => {
   }))
 
   return {
-    tokens,
+    tokens: t,
     load,
     result,
     list,

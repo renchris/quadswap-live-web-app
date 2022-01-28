@@ -40,7 +40,7 @@ const Nav = () => {
     <nav className={s.nav}>
       <header className={s.header}>
         <Link to="/" className={s.logo}>
-          Market<b>Swap</b>
+          Quad<b>Swap</b>
         </Link>
 
         <button onClick={toggle} className={s.toggle}>

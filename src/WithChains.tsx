@@ -14,7 +14,7 @@ const WithChains: FC = ({ children }) => {
   return !Object.keys(chains).length ? null : (
     <WalletProvider
       connectorOpts={{ bridge: 'https://walletconnect.terra.dev/' }}
-      defaultNetwork={chains['mainnet']}
+      defaultNetwork={chains['testnet']}
       walletConnectChainIds={walletConnectChainIds}
     >
       {children}

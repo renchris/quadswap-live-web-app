@@ -70,23 +70,18 @@ export default (user: User, actives: string[]): PostPage<SwapUI> => {
   const loadingUI =
     bank.loading || loadingWhitelist || cw20TokenBalance.loading || loadingPairs
   // tokens
-  const nativeTokensOptions = ['uluna', ...actives].map((denom) => ({
-    value: denom,
-    children: format.denom(denom),
-    balance: find(`${denom}:available`, bank.data?.balance) ?? '0',
-    icon: `${TERRA_ASSETS}/icon/60/${format.denom(denom)}.png`,
-  }))
 
-  const cw20TokensList = whitelist
-    ? Object.values(whitelist).map(({ token, symbol, icon }) => ({
-        value: token,
-        children: symbol,
-        balance: cw20TokenBalance.result?.[token] ?? '0',
-        icon,
-      }))
-    : []
+  const cw20TokensList = Object.values(whitelist).map(
+    ({ token, symbol, icon }) => ({
+      value: token,
+      children: symbol,
+      balance: cw20TokenBalance.result?.[token] ?? '0',
+      icon,
+    })
+  )
+  console.log(cw20TokensList)
 
-  const tokens = [...nativeTokensOptions, ...cw20TokensList]
+  const tokens = cw20TokensList
   const getBalance = (from: string) =>
     tokens.find(({ value }) => value === from)?.balance ?? '0'
 

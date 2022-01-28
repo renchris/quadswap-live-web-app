@@ -5,6 +5,8 @@ import { Whitelist } from '../types'
 
 const useWhitelist = () => {
   const name = useCurrentChainName()
+  console.log(name)
+  console.log((tokens as any)[name])
   // const response = useTerraAssets<Dictionary<Whitelist>>('cw20/tokens.json')
   // TODO: Correct type for this token list.
   return { isLoading: false, whitelist: (tokens as any)[name] as Whitelist }
