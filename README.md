@@ -1,4 +1,4 @@
-# Marketswap
+# Quadswap
 
 ## Available Scripts
 
